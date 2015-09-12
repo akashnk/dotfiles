@@ -1,0 +1,2 @@
+ #! /bin/sh
+xterm -hold -e /home/skyone/.scripts/Youtube360

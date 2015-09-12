@@ -1,0 +1,4 @@
+#! /bin/sh
+vid=$(xclip -o)
+youtube-dl $vid -o "/home/skyone/Videos/Youtube-downloads/%(title)s.%(ext)s" -f 18
+

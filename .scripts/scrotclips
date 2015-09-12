@@ -1,0 +1,3 @@
+#! /bin/sh
+# xfce4-screenshooter -r -c
+scrot -s '/tmp/%Y-%m-%d-%T-screen.jpg' -e 'python2 /home/skyone/.scripts/imgclip.py $f && rm $f'
