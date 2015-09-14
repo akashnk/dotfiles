@@ -12,10 +12,10 @@ def getURLtext(url):
     r = requests.get(url)
     while r.status_code is not 200:
         if retryCount == 0:
-            print ('Check your internet connectivity')
+            print 'Check your internet connectivity'
             sys.exit(1)
         retrycount -= 1
-        print ('Request failed, trying again..')
+        print 'Request failed, trying again..'
         time.sleep(3)
         r = requests.get(url)
     data  = r.text
@@ -33,7 +33,7 @@ def findMatches():
 def askUser():
     global choice
     for index, game in enumerate(allMatches[1:], 1):
-        print ('{}.'.format(index) , str(game.string))
+        print '%d.'%index , str(game.string)
     
     choice = int(input('Choose preferred match:\n'))
 
@@ -53,16 +53,16 @@ def getScore():
     inningsReq = mainPage.find("div", { "class" : "innings-requirement" }).string.strip()
     message = score + inningsReq
     guiNotify(message)
-    print (message)
+    print message
 
 try:
     findMatches()
     getScore()
-    notify = input('Would you like to get notification?\nEnter (y|n)\n>')
+    notify = raw_input('Would you like to get notification?\nEnter (y|n)\n>')
     if notify == 'y':
         min = int(input('How many minutes once you would like to get notified?\nEnter min>') )
         while True:
             time.sleep(min * 60)
             getScore()
 except KeyboardInterrupt:
-    print ('keyboard interrupted, program end')
+    print 'keyboard interrupted, program end'
