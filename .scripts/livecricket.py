@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
 from bs4 import BeautifulSoup
 import requests
 import time
