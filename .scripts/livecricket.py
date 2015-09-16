@@ -19,7 +19,9 @@ def getURLtext(url):
         time.sleep(3)
         r = requests.get(url)
     data  = r.text
-    soup = BeautifulSoup(data)
+#soup = BeautifulSoup(data)
+#soup = BeautifulSoup(data,'html.parser')
+    soup = BeautifulSoup(data,'lxml')
     return soup
 
 def findMatches():
