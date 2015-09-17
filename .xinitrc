@@ -4,7 +4,7 @@
 #
 # Executed by startx (run your window manager from here)
 $HOME/.monicarc   #monitor calibration
-
+setxkbmap -model evdev -layout us,in -variant altgr-intl -option terminate:ctrl_alt_bksp lv3:ralt_switch eurosign:5 rupeesign:4
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
    [ -x "$f" ] && . "$f"
@@ -12,7 +12,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
  unset f
 fi
 
-setxkbmap -option terminate:ctrl_alt_bksp
+
 # exec gnome-session
 # exec startkde
 # exec startxfce4
@@ -22,13 +22,13 @@ source /etc/X11/xinit/xinitrc.d/*
 
 
 # Here openbox is kept as default
-session=${1:-xfce}
+session=${1:-compiz}
 
 
 case $session in
     mate                  ) mate-session;;
     gnome                 ) exec gnome-session;;
-    waygnome              ) exec gnome-session --session=gnome-wayland;;
+   # waygnome              ) exec gnome-session --session=gnome-wayland;;
     metacity              ) xfce4-panel & cmst & xfce4-power-manager & volumeicon & metacity --composite;;
     gnome2                ) exec env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic;;
     openbox               ) exec openbox-session;;
@@ -38,13 +38,12 @@ case $session in
     fluxbox               ) exec startfluxbox;;
     mate                  ) exec mate-session;;
     i3                    ) sh ~/.fehbg & exec i3;;
-   # xfce                  ) exec xfce4-power-manager & startxfce4;;
     xfce                  ) exec startxfce4;;
     kodi                  ) exec kodi;;
     chromium              ) exec chromium;;
-    smplayer              ) exec smplayer;;
+    bomi              ) exec bomi;;
    # compiz                ) xmodmap $HOME/.Xmodmap & xfce4-panel & pcmanfm --desktop & connman-ui-gtk & trayfreq & pnmixer & exec compiz ccp;;
-    compiz                ) xfce4-panel & pcmanfm --desktop & nm-applet & volumeicon & redshift-gtk & exec compiz ccp;;
+    compiz                ) xfce4-panel & pcmanfm --desktop & nm-applet & xfce4-power-manager & redshift-gtk & xfce4-clipman & exec compiz ccp;;
     # No known session, try to run it as command
     *) exec $1;;
 esac
