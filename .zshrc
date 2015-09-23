@@ -22,6 +22,7 @@ export PATH="/usr/lib/ccache/bin/:$PATH"
 export MOZ_DISABLE_PANGO=1
 export WINEARCH=win32 
 export WINEPREFIX=~/win32
+export PATH=$PATH:~/bin
 # XDG
 XDG_CONFIG_HOME="$HOME/.config"
 # Eclipse path
@@ -29,9 +30,13 @@ export PATH=$PATH:/home/skyone/eclipse/
 
 #xterm 64 bit colors
 export TERM=xterm-256color
-#eval dircolors ~/.dir_colors
+#eval 'dircolors $HOME/.dircolors/dircolors.zenburn'
 #alias grep='grep --color'
 #alias ls='ls --color=auto'
+
+# If not running interactively, do not do anything
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux
 
 # Pacman alias
 alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
@@ -54,6 +59,9 @@ alias livecricket="/home/skyone/.scripts/livecricket.py"
 alias ytdm='youtube-dl -o "/home/skyone/Videos/Youtube-downloads/%(title)s.%(ext)s" -f 18'  #360p youtube downloads
 alias ytds='youtube-dl -o "/home/skyone/Videos/Youtube-downloads/%(title)s.%(ext)s" -f 5'   #240p youtube downloads
 alias mplayer='mplayer -ao alsa:device=equal'
+
+# python calculator
+alias calc='python3 -ic "from math import *; import cmath"'
 
 # startx
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
